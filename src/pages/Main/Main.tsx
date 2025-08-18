@@ -1,10 +1,10 @@
 import {PropsWithChildren} from 'react';
 
-type MainPageProps = PropsWithChildren<{
+type MainProps = PropsWithChildren<{
   title?: string;
 }>
 
-export function MainPage({title = 'View', children}: MainPageProps): JSX.Element {
+export function Main({title = 'View', children}: MainProps): JSX.Element {
   return (
     <div>
       <body>
