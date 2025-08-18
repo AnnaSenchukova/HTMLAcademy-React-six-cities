@@ -181,6 +181,7 @@ export function Favorites({title = 'View', children}: FavoritesProps): JSX.Eleme
           </a>
         </footer>
       </div>
+      {children}
     </body>
   );
 }
