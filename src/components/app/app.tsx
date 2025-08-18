@@ -1,9 +1,11 @@
-import {Main} from '../../pages/Main';
+import {MainPage} from '../../pages/MainPage';
+import {Favorites} from '../../pages/Favorites';
 
 function App(): JSX.Element {
   return (
     <div>
-      <Main/>
+      <MainPage/>
+      <Favorites/>
     </div>
   );
 }
