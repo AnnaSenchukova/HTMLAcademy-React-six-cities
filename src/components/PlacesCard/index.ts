@@ -1,0 +1,1 @@
+export {PlacesCard} from './PlacesCard';

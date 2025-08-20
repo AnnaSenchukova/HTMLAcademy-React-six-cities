@@ -1,0 +1,1 @@
+export {LocationsItemInFocus} from './LocationsItemInFocus';
