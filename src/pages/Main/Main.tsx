@@ -82,10 +82,10 @@ export function Main({title = 'View', children}: MainProps): ReactElement {
                 <form className="places__sorting" action="#" method="get">
                   <span className="places__sorting-caption">Sort by</span>
                   <span className="places__sorting-type" tabIndex={0}> Popular
-                      <svg className="places__sorting-arrow" width="7" height="4">
-                        <use xlinkHref="#icon-arrow-select"></use>
-                      </svg>
-                    </span>
+                    <svg className="places__sorting-arrow" width="7" height="4">
+                      <use xlinkHref="#icon-arrow-select"></use>
+                    </svg>
+                  </span>
                   <ul className="places__options places__options--custom places__options--opened">
                     <li className="places__option places__option--active" tabIndex={0}>Popular</li>
                     <li className="places__option" tabIndex={0}>Price: low to high</li>
@@ -100,8 +100,7 @@ export function Main({title = 'View', children}: MainProps): ReactElement {
                     </div>
                     <div className="cities__image-wrapper place-card__image-wrapper">
                       <a href="/">
-                        <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200"
-                             alt="Place card"/>
+                        <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place card"/>
                       </a>
                     </div>
                     <div className="place-card__info">
@@ -133,8 +132,7 @@ export function Main({title = 'View', children}: MainProps): ReactElement {
                   <article className="cities__place-card place-card">
                     <div className="cities__image-wrapper place-card__image-wrapper">
                       <a href="/">
-                        <img className="place-card__image" src="img/room.jpg" width="260" height="200"
-                             alt="Place card"/>
+                        <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place card"/>
                       </a>
                     </div>
                     <div className="place-card__info">
@@ -143,8 +141,7 @@ export function Main({title = 'View', children}: MainProps): ReactElement {
                           <b className="place-card__price-value">&euro;80</b>
                           <span className="place-card__price-text">&#47;&nbsp;night</span>
                         </div>
-                        <button className="place-card__bookmark-button place-card__bookmark-button--active button"
-                                type="button">
+                        <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
                           <svg className="place-card__bookmark-icon" width="18" height="19">
                             <use xlinkHref="#icon-bookmark"></use>
                           </svg>
@@ -167,8 +164,7 @@ export function Main({title = 'View', children}: MainProps): ReactElement {
                   <article className="cities__place-card place-card">
                     <div className="cities__image-wrapper place-card__image-wrapper">
                       <a href="/">
-                        <img className="place-card__image" src="img/apartment-02.jpg" width="260" height="200"
-                             alt="Place card"/>
+                        <img className="place-card__image" src="img/apartment-02.jpg" width="260" height="200" alt="Place card"/>
                       </a>
                     </div>
                     <div className="place-card__info">
@@ -203,8 +199,7 @@ export function Main({title = 'View', children}: MainProps): ReactElement {
                     </div>
                     <div className="cities__image-wrapper place-card__image-wrapper">
                       <a href="/">
-                        <img className="place-card__image" src="img/apartment-03.jpg" width="260" height="200"
-                             alt="Place card"/>
+                        <img className="place-card__image" src="img/apartment-03.jpg" width="260" height="200" alt="Place card"/>
                       </a>
                     </div>
                     <div className="place-card__info">
@@ -236,8 +231,7 @@ export function Main({title = 'View', children}: MainProps): ReactElement {
                   <article className="cities__place-card place-card">
                     <div className="cities__image-wrapper place-card__image-wrapper">
                       <a href="/">
-                        <img className="place-card__image" src="img/room.jpg" width="260" height="200"
-                             alt="Place card"/>
+                        <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place card"/>
                       </a>
                     </div>
                     <div className="place-card__info">
@@ -246,8 +240,7 @@ export function Main({title = 'View', children}: MainProps): ReactElement {
                           <b className="place-card__price-value">&euro;80</b>
                           <span className="place-card__price-text">&#47;&nbsp;night</span>
                         </div>
-                        <button className="place-card__bookmark-button place-card__bookmark-button--active button"
-                                type="button">
+                        <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
                           <svg className="place-card__bookmark-icon" width="18" height="19">
                             <use xlinkHref="#icon-bookmark"></use>
                           </svg>
