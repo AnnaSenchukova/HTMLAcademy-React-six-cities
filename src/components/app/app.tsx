@@ -9,7 +9,7 @@ import {PropertyNotLogged} from '../../pages/PropertyNotLogged';
 
 function App(): JSX.Element {
   return (
-    <div>
+    <body>
       <Main />
       <MainEmpty />
       <Favorites/>
@@ -17,7 +17,7 @@ function App(): JSX.Element {
       <Login />
       <Property />
       <PropertyNotLogged />
-    </div>
+    </body>
   );
 }
 

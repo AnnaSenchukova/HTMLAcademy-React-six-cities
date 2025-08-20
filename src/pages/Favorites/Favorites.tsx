@@ -1,12 +1,12 @@
-import {PropsWithChildren} from 'react';
+import {PropsWithChildren, ReactElement} from 'react';
 
 type FavoritesProps = PropsWithChildren<{
   title?: string;
 }>
 
-export function Favorites({title = 'View', children}: FavoritesProps): JSX.Element {
+export function Favorites({title = 'View', children}: FavoritesProps): ReactElement {
   return (
-    <body>
+    <>
       <div style={{display: 'none'}}>
         <svg xmlns="http://www.w3.org/2000/svg">
           <symbol id="icon-arrow-select" viewBox="0 0 7 4">
@@ -182,6 +182,6 @@ export function Favorites({title = 'View', children}: FavoritesProps): JSX.Eleme
         </footer>
       </div>
       {children}
-    </body>
+    </>
   );
 }

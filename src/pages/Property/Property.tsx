@@ -1,12 +1,12 @@
-import {PropsWithChildren} from 'react';
+import {PropsWithChildren, ReactElement} from 'react';
 
 type PropertyProps = PropsWithChildren<{
   title?: string;
 }>
 
-export function Property({title = 'View', children}: PropertyProps): JSX.Element {
+export function Property({title = 'View', children}: PropertyProps): ReactElement {
   return (
-    <body>
+    <>
       <div style={{display: 'none'}}>
         <svg xmlns="http://www.w3.org/2000/svg">
           <symbol id="icon-arrow-select" viewBox="0 0 7 4">
@@ -350,6 +350,6 @@ export function Property({title = 'View', children}: PropertyProps): JSX.Element
         </main>
       </div>
       {children}
-    </body>
+    </>
   );
 }
