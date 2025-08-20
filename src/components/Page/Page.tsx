@@ -11,7 +11,7 @@ type PageProps = PropsWithChildren<{
 
 export function Page({classMod, isFooter, children}: PageProps): ReactElement {
   return (
-    <div className={`page page--gray page--main ${classMod || ''}`.trim()}>
+    <div className={`page page--gray ${classMod || ''}`.trim()}>
       <Header/>
       {children}
       {isFooter && <Footer/>}
