@@ -5,13 +5,26 @@ import {Footer} from '../Footer';
 
 type PageProps = PropsWithChildren<{
   classMod?: string;
-  isFooter: boolean;
+  isFooter?: boolean;
+  hasGrayBg?: boolean;
 }>
 
 
-export function Page({classMod, isFooter, children}: PageProps): ReactElement {
+export function Page({
+  classMod = '',
+  isFooter = true,
+  hasGrayBg = false,
+  children
+}: PageProps): ReactElement {
+  const baseClass = 'page';
+  const grayMod = hasGrayBg ? 'page--gray' : '';
+  const className = [baseClass, grayMod, classMod]
+    .filter(Boolean)
+    .join(' ')
+    .trim();
+
   return (
-    <div className={`page page--gray ${classMod || ''}`.trim()}>
+    <div className={className}>
       <Header/>
       {children}
       {isFooter && <Footer/>}
