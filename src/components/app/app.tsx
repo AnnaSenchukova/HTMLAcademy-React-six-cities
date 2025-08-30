@@ -1,23 +1,28 @@
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+
 import {Main} from '../../pages/Main';
 import {Favorites} from '../../pages/Favorites';
 import {Login} from '../../pages/Login';
 import {Property} from '../../pages/Property';
-import {MainEmpty} from '../../pages/MainEmpty';
-import {FavoritesEmpty} from '../../pages/FavoritesEmpty';
-import {PropertyNotLogged} from '../../pages/PropertyNotLogged';
+import {Page404} from '../../pages/Page404';
 
 
 function App(): JSX.Element {
   return (
-    <body>
-      <Main />
-      <MainEmpty />
-      <Favorites/>
-      <FavoritesEmpty />
-      <Login />
-      <Property />
-      <PropertyNotLogged />
-    </body>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route index element={<Main />}/>
+          <Route path="/login" element={<Login />}/>
+          <Route path="/favorites" element={<Favorites />}/>
+          <Route path="/offer" >
+            <Route index element={<Property />} />
+            <Route path=':id' element={<Property />} />
+          </Route>
+        </Route>
+        <Route path="*" element={<Page404/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

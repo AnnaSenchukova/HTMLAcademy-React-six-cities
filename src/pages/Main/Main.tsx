@@ -6,7 +6,7 @@ import {Cities} from '../../components/Cities';
 
 export function Main(): ReactElement {
   return (
-    <Page classMod="page--main" isFooter={false}>
+    <Page classMod="page page--main" isFooter={false}>
       <main className="page__main page__main--index">
         <Cities />
       </main>

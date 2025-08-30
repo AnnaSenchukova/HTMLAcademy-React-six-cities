@@ -2,6 +2,7 @@ import {ReactElement} from 'react';
 
 
 type PlacesCardProps = {
+  id: number;
   city: string;
   isAddToBookmark: boolean;
   isPremium?: boolean;
