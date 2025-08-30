@@ -16,11 +16,10 @@ function App(): JSX.Element {
           <Route path="/login" element={<Login />}/>
           <Route path="/favorites" element={<Favorites />}/>
           <Route path="/offer" >
-            <Route index element={<Property />} />
             <Route path=':id' element={<Property />} />
           </Route>
         </Route>
-        <Route path="*" element={<Page404/>}/>
+        <Route path="*" element={<Page404/>} />
       </Routes>
     </BrowserRouter>
   );
