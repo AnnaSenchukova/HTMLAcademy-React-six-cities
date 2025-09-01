@@ -7,13 +7,14 @@ type PageProps = PropsWithChildren<{
   classMod?: string;
   isFooter?: boolean;
   hasGrayBg?: boolean;
+  mainMod?: string;
 }>
-
 
 export function Page({
   classMod = '',
   isFooter = true,
   hasGrayBg = false,
+  mainMod = '',
   children
 }: PageProps): ReactElement {
   const baseClass = 'page';
@@ -23,10 +24,17 @@ export function Page({
     .join(' ')
     .trim();
 
+  const mainClassName = ['page__main', mainMod]
+    .filter(Boolean)
+    .join(' ')
+    .trim();
+
   return (
     <div className={className}>
       <Header/>
-      {children}
+      <main className={mainClassName}>
+        {children}
+      </main>
       {isFooter && <Footer/>}
     </div>
   );
