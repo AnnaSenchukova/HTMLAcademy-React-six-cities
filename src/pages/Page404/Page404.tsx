@@ -1,5 +1,6 @@
 import {ReactElement} from 'react';
-import {NavLink} from 'react-router-dom';
+
+import {Logo} from '../../components/Logo';
 
 export function Page404(): ReactElement {
   return (
@@ -7,7 +8,7 @@ export function Page404(): ReactElement {
       <b className="cities__status">Error 404. Not Found...</b>
       <p className="cities__status-description">
         <span>Don&apos;t worry! The&ensp;</span>
-        <NavLink to="/"><b>Main</b></NavLink>
+        <Logo />
         <span>&ensp;page is always in place.</span>
       </p>
     </section>
