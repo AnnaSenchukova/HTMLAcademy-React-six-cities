@@ -7,21 +7,22 @@ import {Property} from '../../pages/Property';
 import {Page404} from '../../pages/Page404';
 import {ProtectedRoute} from '../ProtectedRoute';
 import {AuthorizationStatus} from '../../data/enumAuthorizationStatus';
+import {AppRoute} from '../../data/enumAppRoute';
 
 
 function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index path="/" element={<Main />}/>
-        <Route path="/login" element={<Login />}/>
-        <Route path="/favorites" element={
+        <Route index element={<Main />}/>
+        <Route path={AppRoute.Login} element={<Login />}/>
+        <Route path={AppRoute.Favorites} element={
           <ProtectedRoute authorizationStatus={AuthorizationStatus.NoAuth}>
             <Favorites />
           </ProtectedRoute>
         }
         />
-        <Route path="/offer" >
+        <Route path={AppRoute.Property} >
           <Route path=':id' element={<Property />} />
         </Route>
         <Route path="*" element={<Page404/>} />
