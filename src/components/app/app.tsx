@@ -5,6 +5,7 @@ import {Favorites} from '../../pages/Favorites';
 import {Login} from '../../pages/Login';
 import {Property} from '../../pages/Property';
 import {Page404} from '../../pages/Page404';
+import {ProtectedRoute} from '../../components/ProtectedRoute';
 
 
 function App(): JSX.Element {
@@ -14,7 +15,12 @@ function App(): JSX.Element {
         <Route path="/">
           <Route index element={<Main />}/>
           <Route path="/login" element={<Login />}/>
-          <Route path="/favorites" element={<Favorites />}/>
+          <Route path="/favorites" element={
+            <ProtectedRoute isAuthenticated={false}>
+              <Favorites />
+            </ProtectedRoute>
+          }
+          />
           <Route path="/offer" >
             <Route path=':id' element={<Property />} />
           </Route>

@@ -7,7 +7,7 @@ export function Page404(): ReactElement {
       <b className="cities__status">Error 404. Not Found...</b>
       <p className="cities__status-description">
         <span>Don&apos;t worry! The&ensp;</span>
-        <NavLink to='/'><b>Main</b></NavLink>
+        <NavLink to="/"><b>Main</b></NavLink>
         <span>&ensp;page is always in place.</span>
       </p>
     </section>
