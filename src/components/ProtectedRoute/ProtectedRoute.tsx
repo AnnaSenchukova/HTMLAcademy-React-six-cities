@@ -1,10 +1,13 @@
-import { ReactElement, PropsWithChildren } from 'react';
-import { Navigate } from 'react-router-dom';
+import {ReactElement} from 'react';
 
-type ProtectedRouteProps = PropsWithChildren<{
-  isAuthenticated: boolean;
-}>;
+import {AuthorizationStatus} from '../../data/enumAuthorizationStatus';
+import {Navigate} from 'react-router-dom';
 
-export function ProtectedRoute ({ children, isAuthenticated }: ProtectedRouteProps): ReactElement {
-  return isAuthenticated ? {children} : <Navigate to="/login" replace />;
+type ProtectedRouteProps = {
+  authorizationStatus: AuthorizationStatus;
+  children: ReactElement;
+};
+
+export function ProtectedRoute({children, authorizationStatus}: ProtectedRouteProps): ReactElement {
+  return authorizationStatus === AuthorizationStatus.Auth ? children : <Navigate to="/login" replace/>;
 }
