@@ -1,5 +1,6 @@
 export const dataPlacesCard = [
   {
+    id: 1,
     city: 'Amsterdam',
     isAddToBookmark: false,
     isPremium: true,
@@ -11,6 +12,7 @@ export const dataPlacesCard = [
     type: 'Apartment'
   },
   {
+    id: 2,
     city: 'Amsterdam',
     isAddToBookmark: true,
     isPremium: false,
@@ -22,6 +24,7 @@ export const dataPlacesCard = [
     type: 'Private room'
   },
   {
+    id: 3,
     city: 'Amsterdam',
     isAddToBookmark: false,
     isPremium: false,
@@ -33,6 +36,7 @@ export const dataPlacesCard = [
     type: 'Apartment'
   },
   {
+    id: 4,
     city: 'Amsterdam',
     isAddToBookmark: false,
     isPremium: false,
@@ -44,6 +48,7 @@ export const dataPlacesCard = [
     type: 'Apartment'
   },
   {
+    id: 5,
     city: 'Amsterdam',
     isAddToBookmark: true,
     isPremium: true,

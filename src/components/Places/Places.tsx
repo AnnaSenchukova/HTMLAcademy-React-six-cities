@@ -28,8 +28,8 @@ export function Places({ city = 'Amsterdam'}: PlacesProps): ReactElement {
         </ul>
       </form>
       <div className="cities__places-list places__list tabs__content">
-        {dataPlacesCard.map((card, index) => (
-          <PlacesCard key={index} {...card}/>
+        {dataPlacesCard.map((card) => (
+          <PlacesCard key={card.id} {...card}/>
         ))}
       </div>
     </section>
