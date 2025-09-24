@@ -23,12 +23,13 @@ export function PlacesCardsList({places}:PlacesCardsListProps): ReactElement {
   return (
     <div className="cities__places-list places__list tabs__content">
       {places.map((place) => (
-        <PlacesCard
+        <div
           key={place.id}
-          {...place}
-          onMouseMove={handleCardMouseMove}
+          onMouseMove={() => handleCardMouseMove(place.id)}
           onMouseLeave={handleCardMouseLeave}
-        />
+        >
+          <PlacesCard {...place} />
+        </div>
       ))}
     </div>
   );

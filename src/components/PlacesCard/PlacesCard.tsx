@@ -5,24 +5,14 @@ import {MAX_PERCENT_STARS_WIDTH, STARS_COUNT} from '../../const/constRaiting';
 import type {PlacesCardType} from '../../types/PlacesCardType';
 
 type PlacesCardProps = PlacesCardType & {
-  onMouseMove?: (id: number) => void;
-  onMouseLeave?: () => void;
-  place?: 'cities' | 'favorites';
+  place?: 'cities' | 'favorites' | 'near-places';
 };
 
 export function PlacesCard({...props}: PlacesCardProps): ReactElement {
   const ratingWidth = `${(props.rating / STARS_COUNT) * MAX_PERCENT_STARS_WIDTH}%`;
 
-  const handleMouseMove = () => {
-    props.onMouseMove?.(props.id);
-  };
-
   return (
-    <article
-      className={`${props.place || 'cities'}__place-card place-card`}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={props.onMouseLeave}
-    >
+    <article className={`${props.place || 'cities'}__place-card place-card`}>
       {props.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>

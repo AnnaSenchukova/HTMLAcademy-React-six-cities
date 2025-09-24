@@ -1,0 +1,1 @@
+export {PlacesSorting} from './PlacesSorting';
