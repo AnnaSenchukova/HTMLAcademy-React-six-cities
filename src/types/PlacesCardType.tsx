@@ -1,4 +1,4 @@
-export type PlacesCardProps = {
+export type PlacesCardType = {
   id: number;
   isAddToBookmark: boolean;
   isPremium?: boolean;

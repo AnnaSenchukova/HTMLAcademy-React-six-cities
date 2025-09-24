@@ -1,6 +1,6 @@
-import type {PlacesCardProps} from '../types/PlacesCardProps';
+import type {PlacesCardType} from '../types/PlacesCardType';
 
-export const mockPlacesCard : PlacesCardProps[] = [
+export const mockPlacesCard : PlacesCardType[] = [
   {
     id: 1,
     isAddToBookmark: false,
@@ -55,6 +55,32 @@ export const mockPlacesCard : PlacesCardProps[] = [
   },
   {
     id: 5,
+    isAddToBookmark: true,
+    isPremium: true,
+    imageSrc: 'img/room.jpg',
+    price: 80,
+    rating: 4,
+    description: 'Wood and stone place',
+    type: 'room',
+    city: {
+      name: 'Amsterdam'
+    }
+  },
+  {
+    id: 6,
+    isAddToBookmark: false,
+    isPremium: false,
+    imageSrc: 'img/apartment-03.jpg',
+    price: 180,
+    rating: 5,
+    description: 'Nice, cozy, warm big bed apartment',
+    type: 'hotel',
+    city: {
+      name: 'Amsterdam'
+    }
+  },
+  {
+    id: 7,
     isAddToBookmark: true,
     isPremium: true,
     imageSrc: 'img/room.jpg',

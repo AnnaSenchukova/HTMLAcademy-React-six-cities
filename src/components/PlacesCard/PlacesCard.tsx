@@ -1,22 +1,34 @@
 import {ReactElement} from 'react';
-import { AppRoute } from '../../data/enumAppRoute';
+import { AppRoute } from '../../const/enumAppRoute';
+import {MAX_PERCENT_STARS_WIDTH, STARS_COUNT} from '../../const/constRaiting';
 
-import type {PlacesCardProps} from '../../types/PlacesCardProps';
+import type {PlacesCardType} from '../../types/PlacesCardType';
 
-const STARS_COUNT = 5;
-const MAX_PERCENT_STARS_WIDTH = 100;
+type PlacesCardProps = PlacesCardType & {
+  onMouseMove?: (id: number) => void;
+  onMouseLeave?: () => void;
+  place?: 'cities' | 'favorites';
+};
 
 export function PlacesCard({...props}: PlacesCardProps): ReactElement {
   const ratingWidth = `${(props.rating / STARS_COUNT) * MAX_PERCENT_STARS_WIDTH}%`;
 
+  const handleMouseMove = () => {
+    props.onMouseMove?.(props.id);
+  };
+
   return (
-    <article className="cities__place-card place-card">
+    <article
+      className={`${props.place || 'cities'}__place-card place-card`}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={props.onMouseLeave}
+    >
       {props.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${props.place || 'cities'}__image-wrapper place-card__image-wrapper`}>
         <a href="/">
           <img className="place-card__image" src={props.imageSrc} width="260" height="200" alt="Place card"/>
         </a>

@@ -1,20 +1,33 @@
-import {ReactElement} from 'react';
+import {ReactElement, useState} from 'react';
 
-import type {PlacesCardProps} from '../../types/PlacesCardProps';
+import type {PlacesCardType} from '../../types/PlacesCardType';
 
 import {PlacesCard} from '../PlacesCard';
 
 type PlacesCardsListProps = {
-  places: PlacesCardProps[];
+  places: PlacesCardType[];
 };
 
 export function PlacesCardsList({places}:PlacesCardsListProps): ReactElement {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [activeOffer, setActiveOffer] = useState<number | null>(null);
+
+  const handleCardMouseMove = (id: number) => {
+    setActiveOffer(id);
+  };
+
+  const handleCardMouseLeave = () => {
+    setActiveOffer(null);
+  };
+
   return (
     <div className="cities__places-list places__list tabs__content">
       {places.map((place) => (
         <PlacesCard
           key={place.id}
           {...place}
+          onMouseMove={handleCardMouseMove}
+          onMouseLeave={handleCardMouseLeave}
         />
       ))}
     </div>
