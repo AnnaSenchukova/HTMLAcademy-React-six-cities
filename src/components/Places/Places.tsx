@@ -1,7 +1,7 @@
 import {ReactElement} from 'react';
 
-import {dataPlacesCard} from '../../data/dataPlacesCard';
-import {PlacesCard} from '../PlacesCard';
+import {mockPlacesCard} from '../../mocks/mockPlacesCard';
+import {PlacesCardsList} from '../PlacesCardsList';
 
 type PlacesProps = {
   city?: string;
@@ -11,7 +11,7 @@ export function Places({ city = 'Amsterdam'}: PlacesProps): ReactElement {
   return (
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
-      <b className="places__found">{dataPlacesCard.length} places to stay in {city}</b>
+      <b className="places__found">{mockPlacesCard.length} places to stay in {city}</b>
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by</span>
         <span className="places__sorting-type" tabIndex={0}>
@@ -27,11 +27,7 @@ export function Places({ city = 'Amsterdam'}: PlacesProps): ReactElement {
           <li className="places__option" tabIndex={0}>Top rated first</li>
         </ul>
       </form>
-      <div className="cities__places-list places__list tabs__content">
-        {dataPlacesCard.map((card) => (
-          <PlacesCard key={card.id} {...card}/>
-        ))}
-      </div>
+      <PlacesCardsList places={mockPlacesCard}/>
     </section>
   );
 }

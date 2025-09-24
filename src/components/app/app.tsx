@@ -17,7 +17,7 @@ function App(): JSX.Element {
         <Route index element={<Main />}/>
         <Route path={AppRoute.Login} element={<Login />}/>
         <Route path={AppRoute.Favorites} element={
-          <ProtectedRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+          <ProtectedRoute authorizationStatus={AuthorizationStatus.Auth}>
             <Favorites />
           </ProtectedRoute>
         }
