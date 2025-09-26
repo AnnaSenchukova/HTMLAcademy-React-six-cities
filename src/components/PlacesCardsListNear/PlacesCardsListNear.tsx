@@ -12,7 +12,7 @@ export function PlacesCardsListNear({places}: PlacesCardsListNearProps):ReactEle
     <div className="near-places__list places__list">
       {places.map((place) => (
         <div key={place.id}>
-          <PlacesCard {...place} />
+          <PlacesCard {...place} place="near-places" />
         </div>
       ))}
     </div>

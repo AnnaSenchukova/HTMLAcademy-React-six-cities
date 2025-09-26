@@ -5,14 +5,14 @@ import {MAX_PERCENT_STARS_WIDTH, STARS_COUNT} from '../../const/constRaiting';
 import type {PlacesCardType} from '../../types/PlacesCardType';
 
 type PlacesCardProps = PlacesCardType & {
-  place?: 'cities' | 'favorites' | 'near-places';
+  place: 'cities' | 'favorites' | 'near-places';
 };
 
 export function PlacesCard({...props}: PlacesCardProps): ReactElement {
   const ratingWidth = `${(props.rating / STARS_COUNT) * MAX_PERCENT_STARS_WIDTH}%`;
 
   return (
-    <article className={`${props.place || 'cities'}__place-card place-card`}>
+    <article className={`${props.place}__card place-card`}>
       {props.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>

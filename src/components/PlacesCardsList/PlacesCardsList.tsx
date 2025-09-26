@@ -28,7 +28,7 @@ export function PlacesCardsList({places}:PlacesCardsListProps): ReactElement {
           onMouseMove={() => handleCardMouseMove(place.id)}
           onMouseLeave={handleCardMouseLeave}
         >
-          <PlacesCard {...place} />
+          <PlacesCard {...place} place="cities" />
         </div>
       ))}
     </div>
