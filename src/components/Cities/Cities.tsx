@@ -25,7 +25,7 @@ export function Cities({isEmpty}:CitiesProps): ReactElement {
           </div>
         ) : (
           <div className="cities__places-container container">
-            <Places/>
+            <Places />
             <div className="cities__right-section">
               <Map/>
             </div>

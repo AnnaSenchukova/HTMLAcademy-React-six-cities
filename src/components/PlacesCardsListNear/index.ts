@@ -1,0 +1,1 @@
+export {PlacesCardsListNear} from './PlacesCardsListNear';
