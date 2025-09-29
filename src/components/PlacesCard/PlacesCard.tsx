@@ -3,9 +3,10 @@ import { AppRoute } from '../../const/enumAppRoute';
 import {MAX_PERCENT_STARS_WIDTH, STARS_COUNT} from '../../const/constRaiting';
 
 import type {PlacesCardType} from '../../types/PlacesCardType';
+import type {PlacesVariantType} from '../../types/PlacesVariantType';
 
 type PlacesCardProps = PlacesCardType & {
-  variant: 'cities' | 'favorites' | 'near-places';
+  variant: PlacesVariantType;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
 };

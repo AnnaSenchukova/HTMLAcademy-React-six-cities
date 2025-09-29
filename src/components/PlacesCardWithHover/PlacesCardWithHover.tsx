@@ -2,9 +2,10 @@ import {ReactElement, useState} from 'react';
 
 import {PlacesCard} from '../PlacesCard';
 import type {PlacesCardType} from '../../types/PlacesCardType';
+import type {PlacesVariantType} from '../../types/PlacesVariantType';
 
 type PlacesCardWithHoverProps = PlacesCardType & {
-  variant: 'cities' | 'favorites' | 'near-places';
+  variant: PlacesVariantType;
   onMouseEnter?: (id: number) => void;
   onMouseLeave?: () => void;
 };

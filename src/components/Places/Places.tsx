@@ -1,7 +1,8 @@
 import {PropsWithChildren, ReactElement} from 'react';
+import type {PlacesVariantType} from '../../types/PlacesVariantType';
 
 type PlacesProps = PropsWithChildren <{
-  variant: 'cities' |'favorites'| 'near-places';
+  variant: PlacesVariantType;
 }>
 
 export function Places({ variant, children}: PlacesProps): ReactElement {

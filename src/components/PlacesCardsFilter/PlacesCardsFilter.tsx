@@ -1,13 +1,14 @@
 import {ReactElement} from 'react';
 
 import type {PlacesCardType} from '../../types/PlacesCardType';
+import type {PlacesVariantType} from '../../types/PlacesVariantType';
 import {PlacesCardWithHover} from '../PlacesCardWithHover';
 import {PlacesFoundResults} from '../PlacesFoundResults';
 
 type PlacesCardsFilterProps = {
   places: PlacesCardType[];
   city: string;
-  variant: 'cities' | 'favorites' | 'near-places';
+  variant: PlacesVariantType;
   showPlacesFound?: boolean;
 };
 
