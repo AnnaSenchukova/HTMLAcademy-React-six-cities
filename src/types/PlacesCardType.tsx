@@ -9,5 +9,5 @@ export type PlacesCardType = {
   type: 'apartment' | 'room' | 'house' | 'hotel';
   city: {
     name: string;
-  }
+  };
 }
