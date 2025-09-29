@@ -1,9 +1,9 @@
 import {ReactElement} from 'react';
 
-
 import {mockPlacesCard} from '../../mocks/mockPlacesCard';
 import {Page} from '../../components/Page';
-import {PlacesCardsListNear} from '../../components/PlacesCardsListNear';
+import {Places} from '../../components/Places';
+import {PlacesCardsFilter} from '../../components/PlacesCardsFilter';
 
 export function Property(): ReactElement {
   return (
@@ -197,11 +197,10 @@ export function Property(): ReactElement {
         </div>
         <section className="property__map map"/>
       </section>
-      <div className="container">
-        <section className="near-places places">
-          <h2 className="near-places__title">Other places in the neighbourhood</h2>
-          <PlacesCardsListNear places={mockPlacesCard}/>
-        </section>
+      <div className="container near-places">
+        <Places variant='near-places'>
+          <PlacesCardsFilter places={mockPlacesCard} city='Amsterdam' variant='near-places'/>
+        </Places>
       </div>
     </Page>
   );

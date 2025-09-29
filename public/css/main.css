@@ -574,7 +574,7 @@ img {
   overflow-y: auto
 }
 
-.cities__places-list {
+.cities__list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1724,7 +1724,7 @@ img {
   background-color: #c7c7c7
 }
 
-.near-places {
+.near-places__places {
   margin: 0 16px 0 12px;
   padding-bottom: 27px;
   border-bottom: 2px solid rgba(222, 222, 222, .5)

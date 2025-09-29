@@ -1,0 +1,1 @@
+export {PlacesCardWithHover} from './PlacesCardWithHover';

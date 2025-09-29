@@ -5,20 +5,25 @@ import {MAX_PERCENT_STARS_WIDTH, STARS_COUNT} from '../../const/constRaiting';
 import type {PlacesCardType} from '../../types/PlacesCardType';
 
 type PlacesCardProps = PlacesCardType & {
-  place: 'cities' | 'favorites' | 'near-places';
+  variant: 'cities' | 'favorites' | 'near-places';
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 };
 
-export function PlacesCard({...props}: PlacesCardProps): ReactElement {
+export function PlacesCard({variant, onMouseEnter, onMouseLeave, ...props}: PlacesCardProps): ReactElement {
   const ratingWidth = `${(props.rating / STARS_COUNT) * MAX_PERCENT_STARS_WIDTH}%`;
-
   return (
-    <article className={`${props.place}__card place-card`}>
+    <article
+      className={`${variant}__card place-card`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       {props.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
-      <div className={`${props.place || 'cities'}__image-wrapper place-card__image-wrapper`}>
+      <div className={`${variant}__image-wrapper place-card__image-wrapper`}>
         <a href="/">
           <img className="place-card__image" src={props.imageSrc} width="260" height="200" alt="Place card"/>
         </a>

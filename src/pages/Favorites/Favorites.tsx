@@ -1,9 +1,10 @@
 import {ReactElement} from 'react';
 
 import {Page} from '../../components/Page';
-import {PlacesCard} from '../../components/PlacesCard';
 
 import type {PlacesCardType} from '../../types/PlacesCardType';
+import {Places} from '../../components/Places';
+import {PlacesCardsFilter} from '../../components/PlacesCardsFilter';
 
 type FavoritesProps = {
   places: PlacesCardType[];
@@ -39,15 +40,9 @@ export function Favorites({places}: FavoritesProps): ReactElement {
                     </a>
                   </div>
                 </div>
-                <div className="favorites__places">
-                  {groupedOffers.map((place) => (
-                    <PlacesCard
-                      key={place.id}
-                      {...place}
-                      place="favorites"
-                    />
-                  ))}
-                </div>
+                <Places variant='favorites'>
+                  <PlacesCardsFilter places={groupedOffers} variant='favorites' city={city} />
+                </Places>
               </li>
             ))}
           </ul>

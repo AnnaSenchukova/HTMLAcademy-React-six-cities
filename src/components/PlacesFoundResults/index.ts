@@ -1,0 +1,1 @@
+export {PlacesFoundResults} from './PlacesFoundResults';

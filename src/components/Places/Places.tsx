@@ -1,22 +1,18 @@
-import {ReactElement} from 'react';
+import {PropsWithChildren, ReactElement} from 'react';
 
-import {mockPlacesCard} from '../../mocks/mockPlacesCard';
-import {PlacesCardsList} from '../PlacesCardsList';
-import {PlacesSorting} from '../PlacesSorting';
+type PlacesProps = PropsWithChildren <{
+  variant: 'cities' |'favorites'| 'near-places';
+}>
 
-type PlacesProps = {
-  city?: string;
-}
-
-export function Places({ city = 'Amsterdam'}: PlacesProps): ReactElement {
-  const filteredPlaces = mockPlacesCard.filter((place) => place.city.name === city);
-
+export function Places({ variant, children}: PlacesProps): ReactElement {
   return (
-    <section className="cities__places places">
-      <h2 className="visually-hidden">Places</h2>
-      <b className="places__found">{filteredPlaces.length} places to stay in {city}</b>
-      <PlacesSorting />
-      <PlacesCardsList places={filteredPlaces}/>
+    <section className={`${variant}__places places`}>
+      {variant === 'near-places' ? (
+        <h2 className="near-places__title">Other places in the neighbourhood</h2>
+      ) : (
+        <h2 className="visually-hidden">Places</h2>
+      )}
+      {children}
     </section>
   );
 }
