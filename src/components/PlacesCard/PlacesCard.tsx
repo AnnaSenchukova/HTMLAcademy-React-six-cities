@@ -36,14 +36,14 @@ export function PlacesCard({variant, onMouseEnter, onMouseLeave, ...props}: Plac
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button
-            className={`place-card__bookmark-button button ${props.isAddToBookmark ? 'place-card__bookmark-button--active' : ''}`}
+            className={`place-card__bookmark-button button ${props.isFavorite ? 'place-card__bookmark-button--active' : ''}`}
             type="button"
           >
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
             <span className="visually-hidden">
-              {props.isAddToBookmark ? 'In bookmarks' : 'To bookmarks'}
+              {props.isFavorite ? 'In bookmarks' : 'To bookmarks'}
             </span>
           </button>
         </div>

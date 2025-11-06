@@ -12,7 +12,7 @@ type FavoritesProps = {
 
 export function Favorites({places}: FavoritesProps): ReactElement {
   const groupedOffersByCity = places.reduce<{ [key: string ]: PlacesCardType[] }>((acc, curr) => {
-    if (curr.isAddToBookmark) {
+    if (curr.isFavorite) {
       const city = curr.city.name;
 
       if (!(city in acc)) {
