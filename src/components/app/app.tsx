@@ -6,8 +6,9 @@ import {Login} from '../../pages/Login';
 import {Property} from '../../pages/Property';
 import {Page404} from '../../pages/Page404';
 import {ProtectedRoute} from '../ProtectedRoute';
-import {AuthorizationStatus} from '../../data/enumAuthorizationStatus';
-import {AppRoute} from '../../data/enumAppRoute';
+import {AuthorizationStatus} from '../../const/enumAuthorizationStatus';
+import {AppRoute} from '../../const/enumAppRoute';
+import {mockPlacesCard} from '../../mocks/mockPlacesCard';
 
 
 function App(): JSX.Element {
@@ -17,8 +18,8 @@ function App(): JSX.Element {
         <Route index element={<Main />}/>
         <Route path={AppRoute.Login} element={<Login />}/>
         <Route path={AppRoute.Favorites} element={
-          <ProtectedRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-            <Favorites />
+          <ProtectedRoute authorizationStatus={AuthorizationStatus.Auth}>
+            <Favorites places={mockPlacesCard} />
           </ProtectedRoute>
         }
         />

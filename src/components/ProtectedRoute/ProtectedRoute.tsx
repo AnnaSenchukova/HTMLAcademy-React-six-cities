@@ -1,6 +1,6 @@
 import {ReactElement} from 'react';
 
-import {AuthorizationStatus} from '../../data/enumAuthorizationStatus';
+import {AuthorizationStatus} from '../../const/enumAuthorizationStatus';
 import {Navigate} from 'react-router-dom';
 
 type ProtectedRouteProps = {

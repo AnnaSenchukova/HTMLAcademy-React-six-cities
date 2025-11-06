@@ -1,31 +1,31 @@
 import {ReactElement} from 'react';
+import { AppRoute } from '../../const/enumAppRoute';
+import {MAX_PERCENT_STARS_WIDTH, STARS_COUNT} from '../../const/constRaiting';
 
+import type {PlacesCardType} from '../../types/PlacesCardType';
+import type {PlacesVariantType} from '../../types/PlacesVariantType';
 
-type PlacesCardProps = {
-  id: number;
-  city: string;
-  isAddToBookmark: boolean;
-  isPremium?: boolean;
-  imageSrc: string;
-  link: string;
-  price: number;
-  rating: number;
-  description: string;
-  type: string;
-}
+type PlacesCardProps = PlacesCardType & {
+  variant: PlacesVariantType;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+};
 
-export function PlacesCard({...props}: PlacesCardProps): ReactElement {
-  const ratingWidth = `${(props.rating / 5) * 100}%`;
-
+export function PlacesCard({variant, onMouseEnter, onMouseLeave, ...props}: PlacesCardProps): ReactElement {
+  const ratingWidth = `${(props.rating / STARS_COUNT) * MAX_PERCENT_STARS_WIDTH}%`;
   return (
-    <article className="cities__place-card place-card">
+    <article
+      className={`${variant}__card place-card`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       {props.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
-      <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href={props.link}>
+      <div className={`${variant}__image-wrapper place-card__image-wrapper`}>
+        <a href="/">
           <img className="place-card__image" src={props.imageSrc} width="260" height="200" alt="Place card"/>
         </a>
       </div>
@@ -54,7 +54,7 @@ export function PlacesCard({...props}: PlacesCardProps): ReactElement {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href={props.link}>{props.description}</a>
+          <a href={`${AppRoute.Property}/${props.id}`}>{props.description}</a>
         </h2>
         <p className="place-card__type">{props.type}</p>
       </div>

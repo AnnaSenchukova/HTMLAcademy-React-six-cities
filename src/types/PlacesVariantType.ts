@@ -1,0 +1,1 @@
+export type PlacesVariantType = 'cities' | 'favorites' | 'near-places';
