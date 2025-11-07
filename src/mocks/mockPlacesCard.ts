@@ -1,4 +1,5 @@
 import type {PlacesCardType} from '../types/PlacesCardType';
+import { mockCities } from './mockCities';
 
 export const mockPlacesCard : PlacesCardType[] = [
   {
@@ -15,14 +16,7 @@ export const mockPlacesCard : PlacesCardType[] = [
       longitude: 4.85309666406198,
       zoom: 1
     },
-    city: {
-      name: 'Amsterdam',
-      location: {
-        latitude: 52.3909553943508,
-        longitude: 4.85309666406198,
-        zoom: 10
-      }
-    }
+    city: mockCities.Amsterdam
   },
   {
     id: 2,
@@ -38,14 +32,7 @@ export const mockPlacesCard : PlacesCardType[] = [
       longitude: 4.85309666406198,
       zoom: 1
     },
-    city: {
-      name: 'Amsterdam',
-      location: {
-        latitude: 52.3909553943508,
-        longitude: 4.85309666406198,
-        zoom: 10
-      }
-    }
+    city: mockCities.Amsterdam
   },
   {
     id: 3,
@@ -61,14 +48,7 @@ export const mockPlacesCard : PlacesCardType[] = [
       longitude: 4.929309666406198,
       zoom: 1
     },
-    city: {
-      name: 'Amsterdam',
-      location: {
-        latitude: 52.3909553943508,
-        longitude: 4.85309666406198,
-        zoom: 10
-      }
-    }
+    city: mockCities.Amsterdam
   },
   {
     id: 4,
@@ -84,14 +64,7 @@ export const mockPlacesCard : PlacesCardType[] = [
       longitude: 4.929309666406198,
       zoom: 1
     },
-    city: {
-      name: 'Amsterdam',
-      location: {
-        latitude: 52.3909553943508,
-        longitude: 4.85309666406198,
-        zoom: 10
-      }
-    }
+    city: mockCities.Amsterdam
   },
   {
     id: 5,
@@ -107,13 +80,6 @@ export const mockPlacesCard : PlacesCardType[] = [
       longitude: 2.3472439999999994,
       zoom: 1
     },
-    city: {
-      name: 'Paris',
-      location: {
-        latitude: 48.85882333950175,
-        longitude: 2.3470419999999894,
-        zoom: 10
-      }
-    }
+    city: mockCities.Paris
   },
 ];

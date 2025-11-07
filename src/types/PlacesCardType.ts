@@ -1,4 +1,5 @@
 import type {LocationType} from './LocationType';
+import type { CityType } from './CitiesType';
 
 export type PlacesCardType = {
   id: number;
@@ -10,8 +11,5 @@ export type PlacesCardType = {
   description: string;
   type: 'apartment' | 'room' | 'house' | 'hotel';
   location: LocationType,
-  city: {
-    name: string;
-    location: LocationType,
-  };
+  city: CityType;
 }
