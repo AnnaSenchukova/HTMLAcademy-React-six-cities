@@ -4,22 +4,22 @@ import {Page} from '../../components/Page';
 
 import type {PlacesCardType} from '../../types/PlacesCardType';
 import {Places} from '../../components/Places';
-import {PlacesCardsFilter} from '../../components/PlacesCardsFilter';
+import {PlacesCardList} from '../../components/PlacesCardsFilter';
 
 type FavoritesProps = {
   places: PlacesCardType[];
 }
 
 export function Favorites({places}: FavoritesProps): ReactElement {
-  const groupedOffersByCity = places.reduce<{ [key: string ]: PlacesCardType[] }>((acc, curr) => {
-    if (curr.isAddToBookmark) {
-      const city = curr.city.name;
+  const groupedOffersByCity = places.reduce<{ [key: string ]: { city: PlacesCardType['city']; offers: PlacesCardType[] } }>((acc, curr) => {
+    if (curr.isFavorite) {
+      const cityName = curr.city.name;
 
-      if (!(city in acc)) {
-        acc[city] = [];
+      if (!(cityName in acc)) {
+        acc[cityName] = { city: curr.city, offers: [] };
       }
 
-      acc[city].push(curr);
+      acc[cityName].offers.push(curr);
     }
 
     return acc;
@@ -31,17 +31,17 @@ export function Favorites({places}: FavoritesProps): ReactElement {
         <section className="favorites">
           <h1 className="favorites__title">Saved listing</h1>
           <ul className="favorites__list">
-            {Object.entries(groupedOffersByCity).map(([city, groupedOffers]) => (
-              <li key={city} className="favorites__locations-items">
+            {Object.entries(groupedOffersByCity).map(([cityName, { city, offers }]) => (
+              <li key={cityName} className="favorites__locations-items">
                 <div className="favorites__locations locations locations--current">
                   <div className="locations__item">
                     <a className="locations__item-link" href="/">
-                      <span>{city}</span>
+                      <span>{cityName}</span>
                     </a>
                   </div>
                 </div>
                 <Places variant='favorites'>
-                  <PlacesCardsFilter places={groupedOffers} variant='favorites' city={city} />
+                  <PlacesCardList places={offers} variant='favorites' city={city} />
                 </Places>
               </li>
             ))}

@@ -1,4 +1,4 @@
-import {ReactElement, useState} from 'react';
+import {ReactElement} from 'react';
 
 import {PlacesCard} from '../PlacesCard';
 import type {PlacesCardType} from '../../types/PlacesCardType';
@@ -16,16 +16,14 @@ export function PlacesCardWithHover({
   onMouseLeave,
   ...placeProps
 }: PlacesCardWithHoverProps):ReactElement {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [activeCard, setActiveCard] = useState<number | null>(null);
-
   const handleMouseEnter = () => {
-    setActiveCard(placeProps.id);
+    onMouseEnter?.(placeProps.id);
   };
 
   const handleMouseLeave = () => {
-    setActiveCard(null);
+    onMouseLeave?.();
   };
+
   return (
     <PlacesCard
       {...placeProps}
