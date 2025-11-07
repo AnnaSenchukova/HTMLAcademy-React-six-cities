@@ -1,40 +1,23 @@
 import {ReactElement} from 'react';
+import {CityType} from '../../types/CitiesType';
 
-export function Locations(): ReactElement {
+type LocationsProps = {
+  cities: CityType[];
+  activeCity: CityType;
+}
+
+export function Locations({cities, activeCity}: LocationsProps): ReactElement {
   return (
     <div className="tabs">
       <section className="locations container">
         <ul className="locations__list tabs__list">
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="/">
-              <span>Paris</span>
-            </a>
-          </li>
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="/">
-              <span>Cologne</span>
-            </a>
-          </li>
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="/">
-              <span>Brussels</span>
-            </a>
-          </li>
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item tabs__item--active" href="/">
-              <span>Amsterdam</span>
-            </a>
-          </li>
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="/">
-              <span>Hamburg</span>
-            </a>
-          </li>
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="/">
-              <span>Dusseldorf</span>
-            </a>
-          </li>
+          {cities.map((city) => (
+            <li key={city.name} className="locations__item">
+              <p className={`locations__item-link tabs__item ${city.name === activeCity.name ? 'tabs__item--active' : ''}`}>
+                <span>{city.name}</span>
+              </p>
+            </li>
+          ))}
         </ul>
       </section>
     </div>

@@ -17,7 +17,7 @@ type CitiesProps = {
 export function Cities({isEmpty}:CitiesProps): ReactElement {
   return (
     <>
-      <Locations/>
+      <Locations cities={Object.values(mockCities)} activeCity={mockCities.Amsterdam}/>
       <section className="cities">
         <h1 className="visually-hidden">Cities</h1>
         {isEmpty ? (
