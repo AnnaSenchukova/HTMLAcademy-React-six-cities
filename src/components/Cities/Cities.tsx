@@ -34,7 +34,7 @@ export function Cities({isEmpty}:CitiesProps): ReactElement {
               <PlacesCardsFilter places={mockPlacesCard} city={mockCities.Amsterdam} variant='cities' showPlacesFound/>
             </Places>
             <div className="cities__right-section">
-              <Map city={mockCities.Amsterdam}/>
+              <Map city={mockCities.Amsterdam} places={mockPlacesCard}/>
             </div>
           </div>
         )}

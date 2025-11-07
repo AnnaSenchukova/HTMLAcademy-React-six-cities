@@ -1,9 +1,9 @@
-import {useEffect, useRef, RefObject} from 'react';
+import {useEffect, useRef, RefObject, useState} from 'react';
 import leaflet from 'leaflet';
 import type { LocationType } from '../types/LocationType';
 
 function useMap(mapRef: RefObject<HTMLElement | null>, city: LocationType) {
-  const map = useRef<leaflet.Map | null>(null);
+  const [map, setMap] = useState<leaflet.Map | null>(null);
   const isRendered = useRef(false);
 
   useEffect(() => {
@@ -25,14 +25,14 @@ function useMap(mapRef: RefObject<HTMLElement | null>, city: LocationType) {
         )
         .addTo(instance);
 
-      map.current = instance;
+      setMap(instance);
       isRendered.current = true;
-    } else if (map.current && city) {
-      map.current.setView([city.latitude, city.longitude], city.zoom);
+    } else if (map && city) {
+      map.setView([city.latitude, city.longitude], city.zoom);
     }
-  }, [mapRef, city]);
+  }, [mapRef, city, map]);
 
-  return map.current;
+  return map;
 }
 
 export default useMap;
