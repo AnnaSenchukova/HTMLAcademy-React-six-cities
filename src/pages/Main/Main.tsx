@@ -7,11 +7,13 @@ import {mockPlacesCard} from '../../mocks/mockPlacesCard';
 import {Locations} from '../../components/Locations';
 import {CityType} from '../../types/CitiesType';
 import {useFilteredPlaces} from '../../hooks/useFilteredPlaces';
+import {useCardHover} from '../../hooks/useCardHover';
 
 
 export function Main(): ReactElement {
   const [activeCity, setActiveCity] = useState<CityType>(mockCities.Amsterdam);
   const filteredPlaces = useFilteredPlaces(mockPlacesCard, activeCity);
+  const { activeCardId, handleCardMouseEnter, handleCardMouseLeave } = useCardHover();
 
   const handleCityChange = (city: CityType) => {
     setActiveCity(city);
@@ -20,7 +22,7 @@ export function Main(): ReactElement {
   return (
     <Page classMod="page--main" mainMod="page__main--index" isFooter={false}>
       <Locations cities={Object.values(mockCities)} activeCity={activeCity} onCityChange={handleCityChange}/>
-      <Cities city={activeCity} places={filteredPlaces} />
+      <Cities city={activeCity} places={filteredPlaces} activeCardId={activeCardId} onCardMouseEnter={handleCardMouseEnter} onCardMouseLeave={handleCardMouseLeave}/>
     </Page>
   );
 }

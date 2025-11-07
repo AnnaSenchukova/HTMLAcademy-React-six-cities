@@ -3,10 +3,10 @@ import {ReactElement} from 'react';
 import type {PlacesCardType} from '../../types/PlacesCardType';
 import type {PlacesVariantType} from '../../types/PlacesVariantType';
 import type {CityType} from '../../types/CitiesType';
-import {PlacesCardWithHover} from '../PlacesCardWithHover';
+import {PlacesCard} from '../PlacesCard';
 import {PlacesFoundResults} from '../PlacesFoundResults';
 
-type PlacesCardsFilterProps = {
+type PlacesCardListProps = {
   places: PlacesCardType[];
   city: CityType;
   variant: PlacesVariantType;
@@ -15,14 +15,14 @@ type PlacesCardsFilterProps = {
   onMouseLeave?: () => void;
 };
 
-export function PlacesCardsFilter({
+export function PlacesCardList({
   places,
   city,
   variant,
   showPlacesFound = false,
   onMouseEnter,
   onMouseLeave
-}: PlacesCardsFilterProps): ReactElement {
+}: PlacesCardListProps): ReactElement {
   return (
     <>
       {showPlacesFound && city && (
@@ -30,7 +30,7 @@ export function PlacesCardsFilter({
       )}
       <div className={`${variant}__list places__list tabs__content`}>
         {places.map((place) => (
-          <PlacesCardWithHover key={place.id}{...place} variant={variant} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}/>
+          <PlacesCard key={place.id}{...place} variant={variant} onMouseEnter={() => onMouseEnter?.(place.id)} onMouseLeave={onMouseLeave}/>
         ))}
       </div>
     </>

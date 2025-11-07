@@ -4,7 +4,7 @@ import {Page} from '../../components/Page';
 
 import type {PlacesCardType} from '../../types/PlacesCardType';
 import {Places} from '../../components/Places';
-import {PlacesCardsFilter} from '../../components/PlacesCardsFilter';
+import {PlacesCardList} from '../../components/PlacesCardsFilter';
 
 type FavoritesProps = {
   places: PlacesCardType[];
@@ -41,7 +41,7 @@ export function Favorites({places}: FavoritesProps): ReactElement {
                   </div>
                 </div>
                 <Places variant='favorites'>
-                  <PlacesCardsFilter places={offers} variant='favorites' city={city} />
+                  <PlacesCardList places={offers} variant='favorites' city={city} />
                 </Places>
               </li>
             ))}

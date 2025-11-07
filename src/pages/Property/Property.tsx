@@ -4,7 +4,7 @@ import {mockPlacesCard} from '../../mocks/mockPlacesCard';
 import { mockCities } from '../../mocks/mockCities';
 import {Page} from '../../components/Page';
 import {Places} from '../../components/Places';
-import {PlacesCardsFilter} from '../../components/PlacesCardsFilter';
+import {PlacesCardList} from '../../components/PlacesCardsFilter';
 
 export function Property(): ReactElement {
   return (
@@ -200,7 +200,7 @@ export function Property(): ReactElement {
       </section>
       <div className="container near-places">
         <Places variant='near-places'>
-          <PlacesCardsFilter places={mockPlacesCard} city={mockCities.Amsterdam} variant='near-places'/>
+          <PlacesCardList places={mockPlacesCard} city={mockCities.Amsterdam} variant='near-places'/>
         </Places>
       </div>
     </Page>

@@ -1,1 +1,1 @@
-export {PlacesCardsFilter} from './PlacesCardsFilter';
+export {PlacesCardList} from './PlacesCardsFilter';
