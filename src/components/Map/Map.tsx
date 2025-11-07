@@ -13,6 +13,6 @@ export function Map({city}: MapProps):ReactElement {
   useMap(mapRef, city.location);
 
   return (
-    <section className="cities__map map" ref={mapRef}></section>
+    <section className="cities__map map" ref={mapRef} style={{ minHeight: '500px' }}></section>
   );
 }
