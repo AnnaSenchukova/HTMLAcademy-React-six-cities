@@ -18,14 +18,15 @@ type CitiesProps = {
   onCardMouseLeave?: () => void;
 }
 
-export function Cities({
-  isEmpty,
-  city,
-  places,
-  activeCardId,
-  onCardMouseEnter,
-  onCardMouseLeave
-}:CitiesProps): ReactElement {
+export function Cities(props: CitiesProps): ReactElement {
+  const {
+    isEmpty,
+    city,
+    places,
+    activeCardId,
+    onCardMouseEnter,
+    onCardMouseLeave
+  } = props;
 
   const shouldShowEmptyState = isEmpty || !places || places.length === 0;
 
@@ -43,7 +44,14 @@ export function Cities({
         <div className="cities__places-container container">
           <Places variant='cities'>
             <PlacesSorting />
-            <PlacesCardList places={places} city={city} variant='cities' showPlacesFound onMouseEnter={onCardMouseEnter} onMouseLeave={onCardMouseLeave}/>
+            <PlacesCardList
+              places={places}
+              city={city}
+              variant='cities'
+              showPlacesFound
+              onMouseEnter={onCardMouseEnter}
+              onMouseLeave={onCardMouseLeave}
+            />
           </Places>
           <div className="cities__right-section">
             <Map city={city} places={places} activeCardId={activeCardId}/>
