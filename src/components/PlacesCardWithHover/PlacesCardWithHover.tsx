@@ -21,10 +21,12 @@ export function PlacesCardWithHover({
 
   const handleMouseEnter = () => {
     setActiveCard(placeProps.id);
+    onMouseEnter?.(placeProps.id);
   };
 
   const handleMouseLeave = () => {
     setActiveCard(null);
+    onMouseLeave?.();
   };
   return (
     <PlacesCard

@@ -1,4 +1,4 @@
-import {ReactElement} from 'react';
+import {ReactElement, useState} from 'react';
 
 import {Places} from '../Places';
 import {Map} from '../Map';
@@ -15,6 +15,16 @@ type CitiesProps = {
 }
 
 export function Cities({isEmpty}:CitiesProps): ReactElement {
+  const [activeCardId, setActiveCardId] = useState<number | null>(null);
+
+  const handleCardMouseEnter = (id: number) => {
+    setActiveCardId(id);
+  };
+
+  const handleCardMouseLeave = () => {
+    setActiveCardId(null);
+  };
+
   return (
     <>
       <Locations cities={Object.values(mockCities)} activeCity={mockCities.Amsterdam}/>
@@ -31,10 +41,10 @@ export function Cities({isEmpty}:CitiesProps): ReactElement {
           <div className="cities__places-container container">
             <Places variant='cities'>
               <PlacesSorting />
-              <PlacesCardsFilter places={mockPlacesCard} city={mockCities.Amsterdam} variant='cities' showPlacesFound/>
+              <PlacesCardsFilter places={mockPlacesCard} city={mockCities.Amsterdam} variant='cities' showPlacesFound onMouseEnter={handleCardMouseEnter} onMouseLeave={handleCardMouseLeave}/>
             </Places>
             <div className="cities__right-section">
-              <Map city={mockCities.Amsterdam} places={mockPlacesCard}/>
+              <Map city={mockCities.Amsterdam} places={mockPlacesCard} activeCardId={activeCardId}/>
             </div>
           </div>
         )}

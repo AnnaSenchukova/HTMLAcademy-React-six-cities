@@ -60,8 +60,8 @@ export const mockPlacesCard : PlacesCardType[] = [
     description: 'Nice, cozy, warm big bed apartment',
     type: 'hotel',
     location: {
-      latitude: 52.3909553943508,
-      longitude: 4.929309666406198,
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
       zoom: 1
     },
     city: mockCities.Amsterdam

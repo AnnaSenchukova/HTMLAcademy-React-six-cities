@@ -11,13 +11,17 @@ type PlacesCardsFilterProps = {
   city: CityType;
   variant: PlacesVariantType;
   showPlacesFound?: boolean;
+  onMouseEnter?: (id: number) => void;
+  onMouseLeave?: () => void;
 };
 
 export function PlacesCardsFilter({
   places,
   city,
   variant,
-  showPlacesFound = false
+  showPlacesFound = false,
+  onMouseEnter,
+  onMouseLeave
 }: PlacesCardsFilterProps): ReactElement {
   const filteredPlaces = places.filter((place) => place.city.name === city.name);
 
@@ -28,7 +32,7 @@ export function PlacesCardsFilter({
       )}
       <div className={`${variant}__list places__list tabs__content`}>
         {filteredPlaces.map((place) => (
-          <PlacesCardWithHover key={place.id} {...place} variant={variant} />
+          <PlacesCardWithHover key={place.id}{...place} variant={variant} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}/>
         ))}
       </div>
     </>
