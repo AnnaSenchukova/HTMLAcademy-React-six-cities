@@ -6,8 +6,9 @@ import {Locations} from '../Locations';
 import {PlacesNotFound} from '../PlacesNotFound';
 import {LocationsItemInFocus} from '../LocationsItemInFocus';
 import {PlacesSorting} from '../PlacesSorting';
-import {PlacesCardsFilter} from '../PlacesCardsFilter/PlacesCardsFilter';
+import {PlacesCardsFilter} from '../PlacesCardsFilter';
 import {mockPlacesCard} from '../../mocks/mockPlacesCard';
+import { mockCities } from '../../mocks/mockCities';
 
 type CitiesProps = {
   isEmpty?: boolean;
@@ -30,10 +31,10 @@ export function Cities({isEmpty}:CitiesProps): ReactElement {
           <div className="cities__places-container container">
             <Places variant='cities'>
               <PlacesSorting />
-              <PlacesCardsFilter places={mockPlacesCard} city='Amsterdam' variant='cities' showPlacesFound/>
+              <PlacesCardsFilter places={mockPlacesCard} city={mockCities.Amsterdam} variant='cities' showPlacesFound/>
             </Places>
             <div className="cities__right-section">
-              <Map/>
+              <Map city={mockCities.Amsterdam}/>
             </div>
           </div>
         )}
