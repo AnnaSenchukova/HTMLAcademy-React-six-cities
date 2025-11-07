@@ -23,15 +23,13 @@ export function PlacesCardsFilter({
   onMouseEnter,
   onMouseLeave
 }: PlacesCardsFilterProps): ReactElement {
-  const filteredPlaces = places.filter((place) => place.city.name === city.name);
-
   return (
     <>
       {showPlacesFound && city && (
-        <PlacesFoundResults places={filteredPlaces} city={city}/>
+        <PlacesFoundResults places={places} city={city}/>
       )}
       <div className={`${variant}__list places__list tabs__content`}>
-        {filteredPlaces.map((place) => (
+        {places.map((place) => (
           <PlacesCardWithHover key={place.id}{...place} variant={variant} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}/>
         ))}
       </div>
