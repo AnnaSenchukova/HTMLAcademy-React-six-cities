@@ -5,7 +5,7 @@ import {Map} from '../Map';
 import {PlacesNotFound} from '../PlacesNotFound';
 import {LocationsItemInFocus} from '../LocationsItemInFocus';
 import {PlacesSorting} from '../PlacesSorting';
-import {PlacesCardList} from '../PlacesCardsFilter';
+import {PlacesCardList} from '../PlacesCardList';
 import {CityType} from '../../types/CitiesType';
 import {PlacesCardType} from '../../types/PlacesCardType';
 

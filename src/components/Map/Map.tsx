@@ -30,14 +30,12 @@ export function Map({city, places, activeCardId}: MapProps):ReactElement {
         iconAnchor: [20, 40],
       });
 
-      // Очищаем все существующие маркеры
       map.eachLayer((layer) => {
         if (layer instanceof leaflet.Marker) {
           map.removeLayer(layer);
         }
       });
 
-      // Добавляем новые маркеры
       places.filter((place) => place.city.name === city.name).forEach((place) => {
         const isActive = place.id === activeCardId;
         leaflet

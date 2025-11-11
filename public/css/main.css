@@ -1476,6 +1476,7 @@ img {
   color: #000;
   word-break: break-word;
   word-wrap: break-word;
+  white-space: nowrap;
   overflow-wrap: break-word
 }
 
