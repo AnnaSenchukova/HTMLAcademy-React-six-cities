@@ -12,6 +12,7 @@ import {ReviewForm} from '../../components/ReviewForm';
 import {Map} from '../../components/Map';
 import {useCardHover} from '../../hooks/useCardHover';
 import {OfferCardDetailsGallery} from '../../components/OfferCardDetailsGallery';
+import {OfferCardDetailsDescription} from '../../components/OfferCardDetailsDescription';
 
 
 export function Property(): ReactElement {
@@ -26,7 +27,7 @@ export function Property(): ReactElement {
     <Page mainMod="page__main--property" isFooter={false}>
       <section className="property">
         <div className="property__gallery-container container">
-          <OfferCardDetailsGallery currentOffer={currentOffer} />
+          <OfferCardDetailsGallery gallery={currentOffer?.details.gallery} type={currentOffer?.type} />
         </div>
         <div className="property__container container">
           <div className="property__wrapper">
@@ -114,13 +115,7 @@ export function Property(): ReactElement {
                 <span className="property__user-name">Angelina</span>
                 <span className="property__user-status">Pro</span>
               </div>
-              <div className="property__description">
-                {currentOffer?.details.description.map((paragraph: string) => (
-                  <p className="property__text" key={paragraph.slice(0, 50)}>
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
+              <OfferCardDetailsDescription description={currentOffer?.details.description}/>
             </div>
             <ReviewsList reviews={propertyReviews}>
               <ReviewForm />
