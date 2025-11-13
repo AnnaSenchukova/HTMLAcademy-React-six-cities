@@ -1,0 +1,1 @@
+export {OfferCardRating} from './OfferCardRating';

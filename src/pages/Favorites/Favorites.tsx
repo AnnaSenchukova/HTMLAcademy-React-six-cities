@@ -4,7 +4,7 @@ import {Page} from '../../components/Page';
 
 import type {PlacesCardType} from '../../types/PlacesCardType';
 import {Places} from '../../components/Places';
-import {PlacesCardList} from '../../components/PlacesCardsFilter';
+import {PlacesCardList} from '../../components/PlacesCardList';
 
 type FavoritesProps = {
   places: PlacesCardType[];

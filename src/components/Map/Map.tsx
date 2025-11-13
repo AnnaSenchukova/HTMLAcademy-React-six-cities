@@ -9,10 +9,11 @@ import leaflet from 'leaflet';
 type MapProps = {
   city: CityType;
   places: PlacesCardType[];
+  type: 'cities'| 'property';
   activeCardId?: number | null;
 }
 
-export function Map({city, places, activeCardId}: MapProps):ReactElement {
+export function Map({city, places, type, activeCardId}: MapProps):ReactElement {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city.location);
 
@@ -30,14 +31,12 @@ export function Map({city, places, activeCardId}: MapProps):ReactElement {
         iconAnchor: [20, 40],
       });
 
-      // Очищаем все существующие маркеры
       map.eachLayer((layer) => {
         if (layer instanceof leaflet.Marker) {
           map.removeLayer(layer);
         }
       });
 
-      // Добавляем новые маркеры
       places.filter((place) => place.city.name === city.name).forEach((place) => {
         const isActive = place.id === activeCardId;
         leaflet
@@ -54,6 +53,6 @@ export function Map({city, places, activeCardId}: MapProps):ReactElement {
 
 
   return (
-    <section className="cities__map map" ref={mapRef} style={{ minHeight: '500px' }}></section>
+    <section className={`${type}__map map`} ref={mapRef}></section>
   );
 }
