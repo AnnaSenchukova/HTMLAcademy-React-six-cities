@@ -3,7 +3,6 @@ import {useParams} from 'react-router-dom';
 
 import {mockPlacesCard} from '../../mocks/mockPlacesCard';
 import { mockReviews } from '../../mocks/mockReviews';
-import {MAX_PERCENT_STARS_WIDTH, STARS_COUNT} from '../../const/constRaiting';
 import {Page} from '../../components/Page';
 import {Places} from '../../components/Places';
 import {PlacesCardList} from '../../components/PlacesCardList';
@@ -13,6 +12,8 @@ import {Map} from '../../components/Map';
 import {useCardHover} from '../../hooks/useCardHover';
 import {OfferCardDetailsGallery} from '../../components/OfferCardDetailsGallery';
 import {OfferCardDetailsDescription} from '../../components/OfferCardDetailsDescription';
+import {OfferCardDetailsOptionsInside} from '../../components/OfferCardDetailsOptionsInside';
+import {OfferCardRating} from '../../components/OfferCardRating';
 
 
 export function Property(): ReactElement {
@@ -21,7 +22,6 @@ export function Property(): ReactElement {
   const currentOffer = mockPlacesCard.find((offer) => offer.id === Number(id));
   const filteredPlaces = mockPlacesCard.filter((place) => place.city.name === currentOffer?.city.name);
   const { activeCardId, handleCardMouseEnter, handleCardMouseLeave } = useCardHover();
-  const ratingWidth = `${(((currentOffer?.rating || 0) / STARS_COUNT) * MAX_PERCENT_STARS_WIDTH)}%`;
 
   return (
     <Page mainMod="page__main--property" isFooter={false}>
@@ -49,63 +49,23 @@ export function Property(): ReactElement {
                 </span>
               </button>
             </div>
-            <div className="property__rating rating">
-              <div className="property__stars rating__stars">
-                <span style={{width: ratingWidth}}/>
-                <span className="visually-hidden">Rating</span>
-              </div>
-              <span className="property__rating-value rating__value">{currentOffer?.rating}</span>
-            </div>
+            <OfferCardRating rating={currentOffer?.rating || 0} />
             <ul className="property__features">
               <li className="property__feature property__feature--entire">
                 {currentOffer?.type}
               </li>
               <li className="property__feature property__feature--bedrooms">
-                3 Bedrooms
+                {currentOffer?.details.bedrooms} Bedrooms
               </li>
               <li className="property__feature property__feature--adults">
-                Max 4 adults
+                Max {currentOffer?.details.guestCount} adults
               </li>
             </ul>
             <div className="property__price">
               <b className="property__price-value">€{currentOffer?.price}</b>
               <span className="property__price-text">&nbsp;night</span>
             </div>
-            <div className="property__inside">
-              <h2 className="property__inside-title">{'What\'s inside'}</h2>
-              <ul className="property__inside-list">
-                <li className="property__inside-item">
-                  Wi-Fi
-                </li>
-                <li className="property__inside-item">
-                  Washing machine
-                </li>
-                <li className="property__inside-item">
-                  Towels
-                </li>
-                <li className="property__inside-item">
-                  Heating
-                </li>
-                <li className="property__inside-item">
-                  Coffee machine
-                </li>
-                <li className="property__inside-item">
-                  Baby seat
-                </li>
-                <li className="property__inside-item">
-                  Kitchen
-                </li>
-                <li className="property__inside-item">
-                  Dishwasher
-                </li>
-                <li className="property__inside-item">
-                  Cabel TV
-                </li>
-                <li className="property__inside-item">
-                  Fridge
-                </li>
-              </ul>
-            </div>
+            <OfferCardDetailsOptionsInside options={currentOffer?.details.optionsInside} />
             <div className="property__host">
               <h2 className="property__host-title">Meet the host</h2>
               <div className="property__host-user user">

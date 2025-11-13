@@ -15,7 +15,7 @@ function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Main />}/>
+        <Route index path={AppRoute.Root} element={<Main />}/>
         <Route path={AppRoute.Login} element={<Login />}/>
         <Route path={AppRoute.Favorites} element={
           <ProtectedRoute authorizationStatus={AuthorizationStatus.Auth}>
@@ -23,10 +23,8 @@ function App(): JSX.Element {
           </ProtectedRoute>
         }
         />
-        <Route path={AppRoute.Property} >
-          <Route path=':id' element={<Property />} />
-        </Route>
-        <Route path="*" element={<Page404/>} />
+        <Route path={AppRoute.OfferDetails} element={<Property />} />
+        <Route path='*' element={<Page404 />} />
       </Routes>
     </BrowserRouter>
   );

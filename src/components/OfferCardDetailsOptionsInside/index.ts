@@ -1,0 +1,1 @@
+export { OfferCardDetailsOptionsInside } from './OfferCardDetailsOptionsInside';
