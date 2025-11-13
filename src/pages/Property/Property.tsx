@@ -11,57 +11,40 @@ import {ReviewsList} from '../../components/ReviewsList';
 import {ReviewForm} from '../../components/ReviewForm';
 import {Map} from '../../components/Map';
 import {useCardHover} from '../../hooks/useCardHover';
+import {OfferCardDetailsGallery} from '../../components/OfferCardDetailsGallery';
 
 
 export function Property(): ReactElement {
   const { id } = useParams<{ id: string }>();
   const propertyReviews = mockReviews.filter((review) => review.idPlace === Number(id));
-  const detailsOffer = mockPlacesCard.find((offer) => offer.id === Number(id));
-  const filteredPlaces = detailsOffer ? mockPlacesCard.filter((place) => place.city.name === detailsOffer.city.name) : [];
+  const currentOffer = mockPlacesCard.find((offer) => offer.id === Number(id));
+  const filteredPlaces = mockPlacesCard.filter((place) => place.city.name === currentOffer?.city.name);
   const { activeCardId, handleCardMouseEnter, handleCardMouseLeave } = useCardHover();
-  const ratingWidth = `${(((detailsOffer?.rating ?? 0) / STARS_COUNT) * MAX_PERCENT_STARS_WIDTH)}%`;
+  const ratingWidth = `${(((currentOffer?.rating || 0) / STARS_COUNT) * MAX_PERCENT_STARS_WIDTH)}%`;
+
   return (
     <Page mainMod="page__main--property" isFooter={false}>
       <section className="property">
         <div className="property__gallery-container container">
-          <div className="property__gallery">
-            <div className="property__image-wrapper">
-              <img className="property__image" src="img/room.jpg" alt="studio"/>
-            </div>
-            <div className="property__image-wrapper">
-              <img className="property__image" src="img/apartment-01.jpg" alt="studio"/>
-            </div>
-            <div className="property__image-wrapper">
-              <img className="property__image" src="img/apartment-02.jpg" alt="studio"/>
-            </div>
-            <div className="property__image-wrapper">
-              <img className="property__image" src="img/apartment-03.jpg" alt="studio"/>
-            </div>
-            <div className="property__image-wrapper">
-              <img className="property__image" src="img/studio-01.jpg" alt="studio"/>
-            </div>
-            <div className="property__image-wrapper">
-              <img className="property__image" src="img/apartment-01.jpg" alt="studio"/>
-            </div>
-          </div>
+          <OfferCardDetailsGallery currentOffer={currentOffer} />
         </div>
         <div className="property__container container">
           <div className="property__wrapper">
-            {detailsOffer?.isPremium && (
-              <div className="place-card__mark">
+            {currentOffer?.isPremium && (
+              <div className="property__mark">
                 <span>Premium</span>
               </div>
             )}
             <div className="property__name-wrapper">
               <h1 className="property__name">
-                {detailsOffer?.description}
+                {currentOffer?.title}
               </h1>
               <button className="property__bookmark-button button" type="button">
                 <svg className="property__bookmark-icon" width={31} height={33}>
                   <use xlinkHref="#icon-bookmark"/>
                 </svg>
                 <span className="visually-hidden">
-                  {detailsOffer?.isFavorite ? 'In bookmarks' : 'To bookmarks'}
+                  {currentOffer?.isFavorite ? 'In bookmarks' : 'To bookmarks'}
                 </span>
               </button>
             </div>
@@ -70,11 +53,11 @@ export function Property(): ReactElement {
                 <span style={{width: ratingWidth}}/>
                 <span className="visually-hidden">Rating</span>
               </div>
-              <span className="property__rating-value rating__value">{detailsOffer?.rating}</span>
+              <span className="property__rating-value rating__value">{currentOffer?.rating}</span>
             </div>
             <ul className="property__features">
               <li className="property__feature property__feature--entire">
-                {detailsOffer?.type}
+                {currentOffer?.type}
               </li>
               <li className="property__feature property__feature--bedrooms">
                 3 Bedrooms
@@ -84,7 +67,7 @@ export function Property(): ReactElement {
               </li>
             </ul>
             <div className="property__price">
-              <b className="property__price-value">€{detailsOffer?.price}</b>
+              <b className="property__price-value">€{currentOffer?.price}</b>
               <span className="property__price-text">&nbsp;night</span>
             </div>
             <div className="property__inside">
@@ -132,14 +115,11 @@ export function Property(): ReactElement {
                 <span className="property__user-status">Pro</span>
               </div>
               <div className="property__description">
-                <p className="property__text">
-                  A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The
-                  building is green and from 18th century.
-                </p>
-                <p className="property__text">
-                  An independent House, strategically located between Rembrand Square and National Opera, but where
-                  the bustle of the city comes to rest in this alley flowery and colorful.
-                </p>
+                {currentOffer?.details.description.map((paragraph: string) => (
+                  <p className="property__text" key={paragraph.slice(0, 50)}>
+                    {paragraph}
+                  </p>
+                ))}
               </div>
             </div>
             <ReviewsList reviews={propertyReviews}>
@@ -148,11 +128,11 @@ export function Property(): ReactElement {
           </div>
         </div>
         <section className="property__map map"/>
-        <Map city={detailsOffer?.city ?? mockPlacesCard[0].city} places={filteredPlaces} activeCardId={activeCardId} type='property'/>
+        <Map city={currentOffer?.city ?? mockPlacesCard[0].city} places={filteredPlaces} activeCardId={activeCardId} type='property'/>
       </section>
       <div className="container near-places">
         <Places variant='near-places'>
-          <PlacesCardList places={filteredPlaces} city={detailsOffer?.city ?? mockPlacesCard[0].city} variant='near-places' onMouseEnter={handleCardMouseEnter} onMouseLeave={handleCardMouseLeave}/>
+          <PlacesCardList places={filteredPlaces} city={currentOffer?.city ?? mockPlacesCard[0].city} variant='near-places' onMouseEnter={handleCardMouseEnter} onMouseLeave={handleCardMouseLeave}/>
         </Places>
       </div>
     </Page>

@@ -54,7 +54,7 @@ export function PlacesCard({variant, onMouseEnter, onMouseLeave, ...props}: Plac
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href={`${AppRoute.Property}/${props.id}`}>{props.description}</a>
+          <a href={`${AppRoute.Property}/${props.id}`}>{props.title}</a>
         </h2>
         <p className="place-card__type">{props.type}</p>
       </div>
