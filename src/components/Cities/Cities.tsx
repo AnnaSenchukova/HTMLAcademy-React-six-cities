@@ -54,7 +54,7 @@ export function Cities(props: CitiesProps): ReactElement {
             />
           </Places>
           <div className="cities__right-section">
-            <Map city={city} places={places} activeCardId={activeCardId}/>
+            <Map city={city} places={places} type='cities' activeCardId={activeCardId}/>
           </div>
         </div>
       )}

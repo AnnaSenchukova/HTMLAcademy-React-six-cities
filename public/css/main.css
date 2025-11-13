@@ -1213,7 +1213,8 @@ img {
 
 .property__feature--entire {
   background-image: url(../img/ico-place.svg);
-  background-size: 13px 16px
+  background-size: 13px 16px;
+  text-transform: capitalize;
 }
 
 .property__feature--bedrooms {
@@ -1418,7 +1419,9 @@ img {
 
 .property__map {
   width: 100%;
+  max-width: 1144px;
   height: 579px;
+  margin: 0 auto;
   margin-bottom: 50px;
   background-image: url(../img/map-big.jpg);
   background-repeat: no-repeat;

@@ -9,10 +9,11 @@ import leaflet from 'leaflet';
 type MapProps = {
   city: CityType;
   places: PlacesCardType[];
+  type: 'cities'| 'property';
   activeCardId?: number | null;
 }
 
-export function Map({city, places, activeCardId}: MapProps):ReactElement {
+export function Map({city, places, type, activeCardId}: MapProps):ReactElement {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city.location);
 
@@ -52,6 +53,6 @@ export function Map({city, places, activeCardId}: MapProps):ReactElement {
 
 
   return (
-    <section className="cities__map map" ref={mapRef} style={{ minHeight: '500px' }}></section>
+    <section className={`${type}__map map`} ref={mapRef}></section>
   );
 }
