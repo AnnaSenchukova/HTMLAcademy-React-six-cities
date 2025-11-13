@@ -27,7 +27,7 @@ export function Property({authorizationStatus}: PropertyProps): ReactElement {
   const { id } = useParams<{ id: string }>();
   const propertyReviews = mockReviews.filter((review) => review.idPlace === Number(id));
   const currentOffer = mockPlacesCard.find((offer) => offer.id === Number(id));
-  const filteredPlaces = mockPlacesCard.filter((place) => place.city.name === currentOffer?.city.name);
+  const filteredPlaces = mockPlacesCard.filter((place) => place.city.name === currentOffer?.city.name && place.id !== Number(id));
   const { activeCardId, handleCardMouseEnter, handleCardMouseLeave } = useCardHover();
 
   const hostUser = mockUsers.find((user) => user.idUser === currentOffer?.details.hostId);
