@@ -16,9 +16,14 @@ import {OfferCardDetailsDescription} from '../../components/OfferCardDetailsDesc
 import {OfferCardDetailsOptionsInside} from '../../components/OfferCardDetailsOptionsInside';
 import {OfferCardRating} from '../../components/OfferCardRating';
 import {User} from '../../components/User';
+import {AuthorizationStatus} from '../../const/enumAuthorizationStatus';
 
 
-export function Property(): ReactElement {
+type PropertyProps = {
+  authorizationStatus: AuthorizationStatus;
+};
+
+export function Property({authorizationStatus}: PropertyProps): ReactElement {
   const { id } = useParams<{ id: string }>();
   const propertyReviews = mockReviews.filter((review) => review.idPlace === Number(id));
   const currentOffer = mockPlacesCard.find((offer) => offer.id === Number(id));
@@ -76,11 +81,10 @@ export function Property(): ReactElement {
               <OfferCardDetailsDescription description={currentOffer?.details.description}/>
             </div>
             <ReviewsList reviews={propertyReviews}>
-              <ReviewForm />
+              {authorizationStatus === AuthorizationStatus.Auth && <ReviewForm />}
             </ReviewsList>
           </div>
         </div>
-        <section className="property__map map"/>
         <Map city={currentOffer?.city ?? mockPlacesCard[0].city} places={filteredPlaces} activeCardId={activeCardId} type='property'/>
       </section>
       <div className="container near-places">

@@ -23,7 +23,7 @@ function App(): JSX.Element {
           </ProtectedRoute>
         }
         />
-        <Route path={AppRoute.OfferDetails} element={<Property />} />
+        <Route path={AppRoute.OfferDetails} element={<Property authorizationStatus={AuthorizationStatus.Auth} />} />
         <Route path='*' element={<Page404 />} />
       </Routes>
     </BrowserRouter>
