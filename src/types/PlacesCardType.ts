@@ -13,5 +13,5 @@ export type PlacesCardType = {
   type: 'apartment' | 'room' | 'house' | 'hotel';
   location: LocationType;
   city: CityType;
-  details: OfferDetailsType,
+  details: OfferDetailsType;
 }

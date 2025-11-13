@@ -11,7 +11,7 @@ type PlacesCardProps = PlacesCardType & {
   onMouseLeave?: () => void;
 };
 
-export function PlacesCard({variant, onMouseEnter, onMouseLeave, ...props}: PlacesCardProps): ReactElement {
+export function PlacesCard({variant, onMouseEnter, onMouseLeave, id, ...props}: PlacesCardProps): ReactElement {
   return (
     <article
       className={`${variant}__card place-card`}
@@ -48,7 +48,7 @@ export function PlacesCard({variant, onMouseEnter, onMouseLeave, ...props}: Plac
         </div>
         <OfferCardRating rating={props.rating} />
         <h2 className="place-card__name">
-          <a href={`${AppRoute.OfferDetails}/${props.id}`}>{props.title}</a>
+          <a href={`${AppRoute.OfferDetails}/${id}`}>{props.title}</a>
         </h2>
         <p className="place-card__type">{props.type}</p>
       </div>
