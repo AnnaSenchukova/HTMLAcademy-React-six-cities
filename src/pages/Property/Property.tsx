@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom';
 
 import {mockPlacesCard} from '../../mocks/mockPlacesCard';
 import { mockReviews } from '../../mocks/mockReviews';
+import {mockUsers} from '../../mocks/mockUsers';
 import {Page} from '../../components/Page';
 import {Places} from '../../components/Places';
 import {PlacesCardList} from '../../components/PlacesCardList';
@@ -14,6 +15,7 @@ import {OfferCardDetailsGallery} from '../../components/OfferCardDetailsGallery'
 import {OfferCardDetailsDescription} from '../../components/OfferCardDetailsDescription';
 import {OfferCardDetailsOptionsInside} from '../../components/OfferCardDetailsOptionsInside';
 import {OfferCardRating} from '../../components/OfferCardRating';
+import {User} from '../../components/User';
 
 
 export function Property(): ReactElement {
@@ -22,6 +24,8 @@ export function Property(): ReactElement {
   const currentOffer = mockPlacesCard.find((offer) => offer.id === Number(id));
   const filteredPlaces = mockPlacesCard.filter((place) => place.city.name === currentOffer?.city.name);
   const { activeCardId, handleCardMouseEnter, handleCardMouseLeave } = useCardHover();
+
+  const hostUser = mockUsers.find((user) => user.idUser === currentOffer?.details.hostId);
 
   return (
     <Page mainMod="page__main--property" isFooter={false}>
@@ -68,13 +72,7 @@ export function Property(): ReactElement {
             <OfferCardDetailsOptionsInside options={currentOffer?.details.optionsInside} />
             <div className="property__host">
               <h2 className="property__host-title">Meet the host</h2>
-              <div className="property__host-user user">
-                <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                  <img className="property__avatar user__avatar" src="img/avatar-angelina-2.jpg" width={74} height={74} alt="Host avatar"/>
-                </div>
-                <span className="property__user-name">Angelina</span>
-                <span className="property__user-status">Pro</span>
-              </div>
+              <User user={hostUser} isHost />
               <OfferCardDetailsDescription description={currentOffer?.details.description}/>
             </div>
             <ReviewsList reviews={propertyReviews}>

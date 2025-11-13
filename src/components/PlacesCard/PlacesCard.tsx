@@ -1,9 +1,9 @@
 import {ReactElement} from 'react';
 import { AppRoute } from '../../const/enumAppRoute';
-import {MAX_PERCENT_STARS_WIDTH, STARS_COUNT} from '../../const/constRaiting';
 
 import type {PlacesCardType} from '../../types/PlacesCardType';
 import type {PlacesVariantType} from '../../types/PlacesVariantType';
+import {OfferCardRating} from '../OfferCardRating';
 
 type PlacesCardProps = PlacesCardType & {
   variant: PlacesVariantType;
@@ -12,7 +12,6 @@ type PlacesCardProps = PlacesCardType & {
 };
 
 export function PlacesCard({variant, onMouseEnter, onMouseLeave, ...props}: PlacesCardProps): ReactElement {
-  const ratingWidth = `${(props.rating / STARS_COUNT) * MAX_PERCENT_STARS_WIDTH}%`;
   return (
     <article
       className={`${variant}__card place-card`}
@@ -47,12 +46,7 @@ export function PlacesCard({variant, onMouseEnter, onMouseLeave, ...props}: Plac
             </span>
           </button>
         </div>
-        <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={{width: ratingWidth}}></span>
-            <span className="visually-hidden">Rating</span>
-          </div>
-        </div>
+        <OfferCardRating rating={props.rating} />
         <h2 className="place-card__name">
           <a href={`${AppRoute.OfferDetails}/${props.id}`}>{props.title}</a>
         </h2>

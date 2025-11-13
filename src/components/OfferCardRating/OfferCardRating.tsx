@@ -13,7 +13,7 @@ export function OfferCardRating({rating}:OfferCardRatingProps):ReactElement {
         <span style={{width: ratingWidth}}/>
         <span className="visually-hidden">Rating</span>
       </div>
-      <span className="property__rating-value rating__value">{rating.toFixed(1).replace('.', ',')}</span>
+      <span className="property__rating-value rating__value">{rating}</span>
     </div>
   );
 }
